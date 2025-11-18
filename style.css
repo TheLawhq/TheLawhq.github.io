@@ -23,7 +23,8 @@
         }
         .question { 
             margin-top: 20px; 
-            font-size: 1.1rem; 
+            font-size: 1.1rem;
+                border: 1px solid #c936c2; 
         }
         label {
             display: block;
