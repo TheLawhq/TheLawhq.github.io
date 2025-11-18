@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f299eb;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            position: relative; 
+            overflow-x: hidden; 
+        }
+        
+        .heart-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('hearts.png') repeat; 
+            opacity: 0.35; 
+            z-index: -1;
+        }
+        
+        h1 { font-size: 2rem; margin-bottom: 10px; }
+        p { font-size: 1.2rem; }
+        .img-box { margin-top: 30px; }
+        img {
+            width: 90%;
+            max-width: 350px;
+            margin: 10px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        button {
+            width: 70%;
+            background: #f765ed;
+            padding: 14px;
+            font-size: 1.2rem;
+            border: 1px;
+            border-radius: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+            position: relative;
+        }
+        button:hover { opacity: 0.9; }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffd700;
+            top: -10px; 
+            pointer-events: none; 
+            opacity: 0.8;
+            z-index: 9999;
+            animation: fall linear; 
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translate3d(0, 0, 0) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(0, 100vh, 0) rotateZ(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="heart-background"></div>
+
+
+<h1>Rakastan sua!</h1>
+<p>Tässä on mun lahja sulle! Oot ansainnut tän 100%!</p>
+<div class="img-box">
+    <img src="lahja1.png" alt="vaasa-helsinki">
+</div>
+<div>
+    <img src="lahja2.png" alt="lennot">
+</div>
+<div>
+    <img src="saa.png" alt="saa">
+</div>
+<div>
+    <img src="olohuone.avif" alt="olohuone">
+</div>
+<div>
+    <img src="keittio.avif" alt="keittio">
+</div>
+<div>
+    <img src="sanky.avif" alt="sanky">
+</div>
+<div>
+    <img src="parveke.avif" alt="parveke">
+</div>
+<div>
+    <img src="katto.avif" alt="katto">
+</div>
+
+<button id="airbnb">AirBNB sivustolle</button>
+
+<script>
+    document.getElementById('airbnb').addEventListener('click', function() {
+        window.location.href = 'https://www.airbnb.fi/rooms/1139206675323433868?search_mode=regular_search&adults=2&source_impression_id=p3_1763475489_P37OCc8GC5oJfkju&previous_page_section_name=1000&federated_search_id=3ab7390e-9eac-4601-a73f-adb75082a7be&guests=2';
+    });
+
+
+    const confettiColors = ['#f765ed', '#ffd700', '#ff69b4', '#00ff7f', '#add8e6']; 
+    const container = document.body;
+    const spawningDuration = 3000; 
+    const spawnInterval = 50; 
+
+    function spawnConfettiPiece() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        const size = Math.random() * 10 + 5;
+        confetti.style.width = size + 'px';
+        confetti.style.height = size + 'px';
+        confetti.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+        confetti.style.borderRadius = (Math.random() > 0.5 ? '0' : '50%'); 
+
+        container.appendChild(confetti);
+
+        confetti.addEventListener('animationend', () => {
+            confetti.remove();
+        });
+    }
+
+    function startConfettiRain() {
+        const intervalId = setInterval(spawnConfettiPiece, spawnInterval); 
+
+        setTimeout(() => {
+            clearInterval(intervalId);
+        }, spawningDuration);
+    }
+
+    startConfettiRain(); 
+</script>
+
+</body>
+</html>
