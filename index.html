@@ -2,28 +2,38 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Joululahja</title>
     <script src="C:\Users\3akoh\Desktop\mobiilisivu\confetti.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f299eb;
-            margin: 0;
-            padding: 20px;
+            /* Poistetaan 'margin: 0' ja käytetään 'padding: 0' body-elementissä */
+            margin: 0; 
+            padding: 0;
             text-align: center;
+            /* Lisätty: Estää sivun vierimisen vaakasuunnassa tahattomasti */
+            overflow-x: hidden; 
         }
-        h1 { font-size: 1.8rem; margin-bottom: 25px; }
+        h1 { 
+            font-size: 1.8rem; 
+            margin: 20px 10px 25px 10px; /* Lisätty sivumarginaali H1:lle */
+        }
         .quiz-box {
             background: #f5bff1;
             padding: 20px;
-            margin: auto;
+            margin: 0 auto; /* Nollaa sivumarginaalin ja keskittää */
             border-radius: 16px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-            width: 100%;
+            width: calc(100% - 40px); /* 100% - (padding 20px * 2) */
             max-width: 400px;
+            box-sizing: border-box; /* Sisällyttää paddingin ja borderin leveyteen */
         }
-        .question { margin-top: 20px; font-size: 1.1rem; }
+        .question { 
+            margin-top: 20px; 
+            font-size: 1.1rem; 
+        }
         label {
             display: block;
             background: #f5bff1;
@@ -31,10 +41,14 @@
             padding: 12px;
             border-radius: 10px;
             font-size: 1rem;
+            text-align: left; /* Tekee valinnoista helpommin luettavia */
+            cursor: pointer;
         }
         input[type="radio"] {
             transform: scale(1.4);
             margin-right: 10px;
+            /* Säädetty: varmistaa, että radio-painike on samalla linjalla tekstin kanssa */
+            vertical-align: middle; 
         }
         button {
             width: 100%;
@@ -46,22 +60,32 @@
             margin-top: 20px;
             cursor: pointer;
             font-weight: bold;
+            color: #fff; /* Lisätty: Parantaa luettavuutta */
         }
-        button:hover { opacity: 0.9; }
+        button:hover { 
+            opacity: 0.9; 
+        }
     </style>
 </head>
 <body>
-<script> window.onload = () => { confetti(); }; </script>
+<script> 
+    // Tarkista, että confetti-funktio on määritelty ennen kutsumista
+    window.onload = () => { 
+        if (typeof confetti === 'function') {
+            confetti(); 
+        }
+    }; 
+</script>
 <h1>Vastaa kysymyksiin oikein.</h1>
 <div class="quiz-box">
 <form id="quizForm">
     <div class="question">1. Paljonko rakastat minua?</div>
     <label><input type="radio" name="q1" value="1"> Vähän</label>
     <label><input type="radio" name="q1" value="2"> Paljon</label>
-    <label><input type="radio" name="q1" value="3"> Tosi Paljon</label>
+    <label><input type="radio" name="q1" value="3"> **Tosi Paljon**</label>
     <div class="question">2. Haluatko tietää mikä lahja on?</div>
     <label><input type="radio" name="q2" value="1"> Ei</label>
-    <label><input type="radio" name="q2" value="2"> Kyllä</label>
+    <label><input type="radio" name="q2" value="2"> **Kyllä**</label>
     <button type="button" onclick="checkAnswers()">Tarkista vastaukset</button>
 </form>
 </div>
@@ -69,7 +93,11 @@
 function checkAnswers() {
     const q1 = document.querySelector('input[name="q1"]:checked');
     const q2 = document.querySelector('input[name="q2"]:checked');
-    if (!q1 || !q2) { alert("Vastaa kaikkiin kysymyksiin!"); return; }
+    if (!q1 || !q2) { 
+        alert("Vastaa kaikkiin kysymyksiin!"); 
+        return; 
+    }
+    // Oikeat vastaukset: Q1=3 (Tosi Paljon), Q2=2 (Kyllä)
     if (q1.value === "3" && q2.value === "2") {
         window.location.href = "lahja.html";
     } else {
