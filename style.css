@@ -1,4 +1,4 @@
-        body {
+body {
             font-family: Arial, sans-serif;
             background: #f299eb;
             margin: 0; 
@@ -19,12 +19,11 @@
             width: calc(100% - 40px);
             max-width: 400px;
             box-sizing: border-box;
-                border: 1px solid #c936c2; 
+            border: 1px solid #c936c2; 
         }
         .question { 
             margin-top: 20px; 
             font-size: 1.1rem;
-                border: 1px solid #c936c2; 
         }
         label {
             display: block;
