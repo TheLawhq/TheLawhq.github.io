@@ -9,26 +9,24 @@
         body {
             font-family: Arial, sans-serif;
             background: #f299eb;
-            /* Poistetaan 'margin: 0' ja käytetään 'padding: 0' body-elementissä */
             margin: 0; 
             padding: 0;
             text-align: center;
-            /* Lisätty: Estää sivun vierimisen vaakasuunnassa tahattomasti */
             overflow-x: hidden; 
         }
         h1 { 
             font-size: 1.8rem; 
-            margin: 20px 10px 25px 10px; /* Lisätty sivumarginaali H1:lle */
+            margin: 20px 10px 25px 10px; 
         }
         .quiz-box {
             background: #f5bff1;
             padding: 20px;
-            margin: 0 auto; /* Nollaa sivumarginaalin ja keskittää */
+            margin: 0 auto; 
             border-radius: 16px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-            width: calc(100% - 40px); /* 100% - (padding 20px * 2) */
+            width: calc(100% - 40px); 
             max-width: 400px;
-            box-sizing: border-box; /* Sisällyttää paddingin ja borderin leveyteen */
+            box-sizing: border-box; 
         }
         .question { 
             margin-top: 20px; 
@@ -41,13 +39,12 @@
             padding: 12px;
             border-radius: 10px;
             font-size: 1rem;
-            text-align: left; /* Tekee valinnoista helpommin luettavia */
+            text-align: left; 
             cursor: pointer;
         }
         input[type="radio"] {
             transform: scale(1.4);
             margin-right: 10px;
-            /* Säädetty: varmistaa, että radio-painike on samalla linjalla tekstin kanssa */
             vertical-align: middle; 
         }
         button {
@@ -60,7 +57,7 @@
             margin-top: 20px;
             cursor: pointer;
             font-weight: bold;
-            color: #fff; /* Lisätty: Parantaa luettavuutta */
+            color: #fff; 
         }
         button:hover { 
             opacity: 0.9; 
@@ -69,7 +66,6 @@
 </head>
 <body>
 <script> 
-    // Tarkista, että confetti-funktio on määritelty ennen kutsumista
     window.onload = () => { 
         if (typeof confetti === 'function') {
             confetti(); 
@@ -82,10 +78,10 @@
     <div class="question">1. Paljonko rakastat minua?</div>
     <label><input type="radio" name="q1" value="1"> Vähän</label>
     <label><input type="radio" name="q1" value="2"> Paljon</label>
-    <label><input type="radio" name="q1" value="3"> **Tosi Paljon**</label>
+    <label><input type="radio" name="q1" value="3"> Tosi Paljon</label>
     <div class="question">2. Haluatko tietää mikä lahja on?</div>
     <label><input type="radio" name="q2" value="1"> Ei</label>
-    <label><input type="radio" name="q2" value="2"> **Kyllä**</label>
+    <label><input type="radio" name="q2" value="2"> Kyllä</label>
     <button type="button" onclick="checkAnswers()">Tarkista vastaukset</button>
 </form>
 </div>
@@ -97,7 +93,6 @@ function checkAnswers() {
         alert("Vastaa kaikkiin kysymyksiin!"); 
         return; 
     }
-    // Oikeat vastaukset: Q1=3 (Tosi Paljon), Q2=2 (Kyllä)
     if (q1.value === "3" && q2.value === "2") {
         window.location.href = "lahja.html";
     } else {
