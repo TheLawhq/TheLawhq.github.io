@@ -111,16 +111,16 @@
         #countdown-timer {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
             margin-top: 20px;
         }
 
         .time-box {
             background-color: #f765ed;
             color: black;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
-            min-width: 80px;
+            min-width: 70px;
         }
 
         .time-value {
