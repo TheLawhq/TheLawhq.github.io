@@ -103,7 +103,8 @@ body {
             pointer-events: none; 
             opacity: 0.8;
             z-index: 9999;
-            animation: fall linear; 
+            animation: fall linear;
+            width: calc(100% - 40px);
         }
 
         .countdown-container {
